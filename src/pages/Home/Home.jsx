@@ -3,6 +3,7 @@ import Navbar from '../../components/Navbar/Navbar';
 import RepoCard from '../../components/RepoCard/RepoCard';
 import SortDropdown from '../../components/SortDropdown/SortDropdown';
 import { popularRepos } from '../../services/apiCalls/apiCalls';
+import Login from '../Login/Login';
 import "./Home.css"
 
 const Home = () => {
@@ -21,6 +22,7 @@ const Home = () => {
 
   return (
     <div>
+    <Login />
       <Navbar setTopic={setTopic} />
       <SortDropdown setSort={setSort} />
       <div className="repo-container">
