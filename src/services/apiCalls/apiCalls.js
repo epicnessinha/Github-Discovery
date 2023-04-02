@@ -2,6 +2,7 @@
 const API_BASE_URL = 'https://api.github.com';
 
 export const popularRepos = async (topic, sort) => {
+  // eslint-disable-next-line no-undef
   const response = await fetch(
     `${API_BASE_URL}/search/repositories?q=topic:${topic}&sort=${sort}&order=desc`
   );

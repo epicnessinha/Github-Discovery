@@ -1,0 +1,11 @@
+.repo-card {
+    margin: 15px;
+    transition: transform 0.3s ease;
+    display: flex;
+  }
+  
+  .repo-card:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+  
