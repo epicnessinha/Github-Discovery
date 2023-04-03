@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Card, Button } from "react-bootstrap";
+import { Card } from "react-bootstrap";
+import { BsStar, BsStarFill } from "react-icons/bs";
 import "./RepositoryCard.css";
 
 const RepositoryCard = ({ repo, bookmarks, setBookmarks, toggleTopics }) => {
-  const [bookmarked, setBookmarked] = useState(false);
+  const [bookmarked, setBookmarked] = useState(bookmarks.includes(repo.id));
 
   const toggleBookmark = () => {
     setBookmarked(!bookmarked);
@@ -21,25 +22,31 @@ const RepositoryCard = ({ repo, bookmarks, setBookmarks, toggleTopics }) => {
     toggleTopics.length === 0 || toggleTopics.includes(repo.topic);
 
   return (
-    <Card className="repo-card mb-3" style={{ maxWidth: "540px" }}>
-      {topicMatch && (
-        <Card.Body>
-          <Card.Title>{repo.name}</Card.Title>
-          <Card.Text>{repo.description}</Card.Text>
-          <Button onClick={toggleBookmark} variant="primary">
-            {bookmarked ? "Unbookmark" : "Bookmark"}
-          </Button>{" "}
-          <Button
-            href={repo.html_url}
-            target="_blank"
-            rel="noopener noreferrer"
-            variant="secondary"
-          >
-            View on Github
-          </Button>
-        </Card.Body>
-      )}
-    </Card>
+    <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
+      <Card className="repo-card" style={{ width: "15rem" }}>
+        {topicMatch && (
+          <>
+            <Card.Img variant="top" src={repo.owner.avatar_url} />
+            <Card.Body>
+              <Card.Title>{repo.name}</Card.Title>
+              <Card.Text>{repo.description}</Card.Text>
+            </Card.Body>
+            <Card.Footer>
+              <div
+                className="bookmark-icon"
+                onClick={toggleBookmark}
+              >
+                {bookmarked ? (
+                  <BsStarFill size={24} color="gold" />
+                ) : (
+                  <BsStar size={24} color="gold" />
+                )}
+              </div>
+            </Card.Footer>
+          </>
+        )}
+      </Card>
+    </a>
   );
 };
 

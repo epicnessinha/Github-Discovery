@@ -24,7 +24,7 @@ function Header(props) {
           </NavLink>
         </li>
         <li className="header-nav-item">
-          <NavLink exact to="/logout" className="header-nav-link">
+          <NavLink exact to="/login" className="header-nav-link">
             Logout
           </NavLink>
         </li>

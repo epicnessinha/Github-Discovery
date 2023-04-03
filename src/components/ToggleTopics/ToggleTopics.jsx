@@ -1,35 +1,61 @@
 import React, { useState } from "react";
 import "./ToggleTopics.css";
 
-const ToggleTopic = ({ setTopic }) => {
+const ToggleTopics = ({ setTopics }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [selectedTopics, setSelectedTopics] = useState([]);
 
   const handleTopicChange = (topic) => {
-    setTopic(topic);
-    setIsOpen(false);
+    if (selectedTopics.includes(topic)) {
+      setSelectedTopics(selectedTopics.filter((t) => t !== topic));
+    } else {
+      setSelectedTopics([...selectedTopics, topic]);
+    }
   };
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
+  const handleApply = () => {
+    setTopics(selectedTopics);
+    setIsOpen(false);
   };
 
   return (
     <div className="dropdown-container">
-      <button onClick={toggleDropdown} className="dropdown-btn">
-        Select a topic
+      <button className="toggle-button" onClick={() => setIsOpen(!isOpen)}>
+        Toggle Topics
       </button>
       {isOpen && (
         <div className="dropdown">
           <ul>
-            <li onClick={() => handleTopicChange("javascript")}>JavaScript</li>
-            <li onClick={() => handleTopicChange("react")}>React</li>
-            <li onClick={() => handleTopicChange("python")}>Python</li>
-            <li onClick={() => handleTopicChange("java")}>Java</li>
+            <li
+              className={selectedTopics.includes("javascript") ? "selected" : ""}
+              onClick={() => handleTopicChange("javascript")}
+            >
+              JavaScript
+            </li>
+            <li
+              className={selectedTopics.includes("react") ? "selected" : ""}
+              onClick={() => handleTopicChange("react")}
+            >
+              React
+            </li>
+            <li
+              className={selectedTopics.includes("python") ? "selected" : ""}
+              onClick={() => handleTopicChange("python")}
+            >
+              Python
+            </li>
+            <li
+              className={selectedTopics.includes("java") ? "selected" : ""}
+              onClick={() => handleTopicChange("java")}
+            >
+              Java
+            </li>
           </ul>
+          <button onClick={handleApply}>Apply</button>
         </div>
       )}
     </div>
   );
 };
 
-export default ToggleTopic;
+export default ToggleTopics;

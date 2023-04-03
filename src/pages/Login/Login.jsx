@@ -1,4 +1,5 @@
-// Login.js
+/* eslint-disable no-undef */
+
 import React, { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { login } from "../../services/apiCalls/apiCalls";
