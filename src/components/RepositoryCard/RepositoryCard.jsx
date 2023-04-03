@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Card, Button } from "react-bootstrap";
+import { Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "./RepositoryCard.css";
 
 const RepositoryCard = ({ repo, bookmarks, setBookmarks, toggleTopics }) => {
@@ -21,23 +22,38 @@ const RepositoryCard = ({ repo, bookmarks, setBookmarks, toggleTopics }) => {
     toggleTopics.length === 0 || toggleTopics.includes(repo.topic);
 
   return (
-    <Card className="repo-card mb-3" style={{ maxWidth: "540px" }}>
+    <Card
+      as={Link}
+      to={{ pathname: repo.html_url }}
+      className="repo-card"
+      style={{ width: "18rem" }}
+    >
       {topicMatch && (
-        <Card.Body>
-          <Card.Title>{repo.name}</Card.Title>
-          <Card.Text>{repo.description}</Card.Text>
-          <Button onClick={toggleBookmark} variant="primary">
-            {bookmarked ? "Unbookmark" : "Bookmark"}
-          </Button>{" "}
-          <Button
-            href={repo.html_url}
-            target="_blank"
-            rel="noopener noreferrer"
-            variant="secondary"
-          >
-            View on Github
-          </Button>
-        </Card.Body>
+        <>
+          <Card.Img variant="top" src={repo.owner.avatar_url} />
+          <Card.Body>
+            <Card.Title>{repo.name}</Card.Title>
+            <Card.Text>{repo.description}</Card.Text>
+          </Card.Body>
+          <Card.Footer>
+            <button
+              onClick={toggleBookmark}
+              className={`btn btn-sm ${
+                bookmarked ? "btn-danger" : "btn-outline-danger"
+              }`}
+            >
+              {bookmarked ? "Unbookmark" : "Bookmark"}
+            </button>{" "}
+            <button
+              href={repo.html_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-sm btn-outline-primary"
+            >
+              View on Github
+            </button>
+          </Card.Footer>
+        </>
       )}
     </Card>
   );
