@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import "./UserAccount.css"
 
-const MyAccountPage = ({ user, setUser }) => {
+const UserAccount = ({ user, setUser }) => {
   const [username, setUsername] = useState(user.username);
   const [email, setEmail] = useState(user.email || '');
 
@@ -37,4 +37,4 @@ const MyAccountPage = ({ user, setUser }) => {
   );
 };
 
-export default MyAccountPage;
+export default UserAccount;
