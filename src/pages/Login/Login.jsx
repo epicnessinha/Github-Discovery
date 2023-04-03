@@ -1,13 +1,25 @@
+// Login.js
 import React, { useState } from 'react';
-import "./Login.css"
+import { useNavigate, Link } from 'react-router-dom';
+import { login } from '../../services/apiCalls/apiCalls';
+import "./Login.css";
 
-const Login = ({ setUser, onRegisterClick }) => {
+const Login = ({ setUser }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setUser({ username, password });
+    try {
+      const userId = await login(username, password);
+      localStorage.setItem('token', userId);
+      setUser({ username, password });
+      navigate('/discovery');
+    } catch (error) {
+      setErrorMessage(error.message);
+    }
   };
 
   return (
@@ -32,9 +44,10 @@ const Login = ({ setUser, onRegisterClick }) => {
         <br />
         <button type="submit">Submit</button>
       </form>
+      {errorMessage && <p>{errorMessage}</p>}
       <div>
-        <p>Don't have an account?</p>
-        <button onClick={onRegisterClick}>Register</button>
+        <p>Don&apos;t have an account?</p>
+        <Link to="/register">Register</Link>
       </div>
     </div>
   );
