@@ -1,24 +1,23 @@
 .header-nav {
-    display: flex;
-    justify-content: flex-end;
-    margin: 1rem;
-  }
-  
-  .header-nav-list {
-    display: flex;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .header-nav-item {
-    margin-left: 1rem;
-  }
-  
-  .header-nav-link {
-    color: #0b0b0b;
-    text-decoration: none;
-    font-weight: bold;
-    font-size: 1.2rem;
-  }
-  
+  display: flex;
+  justify-content: flex-end;
+  margin: 1rem;
+}
+
+.header-nav-list {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header-nav-item {
+  margin-left: 1rem;
+}
+
+.header-nav-link {
+  color: #0b0b0b;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2rem;
+}

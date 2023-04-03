@@ -1,19 +1,19 @@
-import React, { useState, useEffect } from 'react';
-import RepositoryCard from '../RepositoryCard/RepositoryCard';
-import './Bookmarks.css';
+import React, { useState, useEffect } from "react";
+import RepositoryCard from "../RepositoryCard/RepositoryCard";
+import "./Bookmarks.css";
 
 const Bookmarks = () => {
   const [bookmarkedRepos, setBookmarkedRepos] = useState([]);
 
   useEffect(() => {
-    const bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+    const bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
     setBookmarkedRepos(bookmarks);
   }, []);
 
   const handleRemoveBookmark = (id) => {
     const newBookmarks = bookmarkedRepos.filter((repo) => repo.id !== id);
     setBookmarkedRepos(newBookmarks);
-    localStorage.setItem('bookmarks', JSON.stringify(newBookmarks));
+    localStorage.setItem("bookmarks", JSON.stringify(newBookmarks));
   };
 
   return (
