@@ -1,5 +1,5 @@
-import React from 'react';
-import "./SortDropdown.css"
+import React from "react";
+import "./SortDropdown.css";
 
 const SortDropdown = ({ setSort }) => {
   const handleSortChange = (e) => {

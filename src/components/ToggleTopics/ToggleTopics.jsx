@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import './ToggleTopics.css';
+import React, { useState } from "react";
+import "./ToggleTopics.css";
 
 const ToggleTopic = ({ setTopic }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,10 +21,10 @@ const ToggleTopic = ({ setTopic }) => {
       {isOpen && (
         <div className="dropdown">
           <ul>
-            <li onClick={() => handleTopicChange('javascript')}>JavaScript</li>
-            <li onClick={() => handleTopicChange('react')}>React</li>
-            <li onClick={() => handleTopicChange('python')}>Python</li>
-            <li onClick={() => handleTopicChange('java')}>Java</li>
+            <li onClick={() => handleTopicChange("javascript")}>JavaScript</li>
+            <li onClick={() => handleTopicChange("react")}>React</li>
+            <li onClick={() => handleTopicChange("python")}>Python</li>
+            <li onClick={() => handleTopicChange("java")}>Java</li>
           </ul>
         </div>
       )}

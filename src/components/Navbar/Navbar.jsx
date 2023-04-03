@@ -1,8 +1,8 @@
-import React from 'react';
-import "./Navbar.css"
+import React from "react";
+import "./Navbar.css";
 
 const Navbar = ({ setTopic }) => {
-  const topics = ['javascript', 'python', 'ruby', 'java'];
+  const topics = ["javascript", "python", "ruby", "java"];
 
   return (
     <nav>

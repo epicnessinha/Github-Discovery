@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
-import "./UserAccount.css"
+import React, { useState } from "react";
+import "./UserAccount.css";
 
 const UserAccount = ({ user, setUser }) => {
   const [username, setUsername] = useState(user.username);
-  const [email, setEmail] = useState(user.email || '');
+  const [email, setEmail] = useState(user.email || "");
 
   const handleSubmit = (e) => {
     e.preventDefault();

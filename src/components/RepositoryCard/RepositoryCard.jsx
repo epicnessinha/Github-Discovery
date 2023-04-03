@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Card, Button } from 'react-bootstrap';
-import './RepositoryCard.css';
+import React, { useState } from "react";
+import { Card, Button } from "react-bootstrap";
+import "./RepositoryCard.css";
 
 const RepositoryCard = ({ repo, bookmarks, setBookmarks, toggleTopics }) => {
   const [bookmarked, setBookmarked] = useState(false);
@@ -17,17 +17,18 @@ const RepositoryCard = ({ repo, bookmarks, setBookmarks, toggleTopics }) => {
     }
   };
 
-  const topicMatch = toggleTopics.length === 0 || toggleTopics.includes(repo.topic);
+  const topicMatch =
+    toggleTopics.length === 0 || toggleTopics.includes(repo.topic);
 
   return (
-    <Card className="repo-card mb-3" style={{ maxWidth: '540px' }}>
+    <Card className="repo-card mb-3" style={{ maxWidth: "540px" }}>
       {topicMatch && (
         <Card.Body>
           <Card.Title>{repo.name}</Card.Title>
           <Card.Text>{repo.description}</Card.Text>
           <Button onClick={toggleBookmark} variant="primary">
-            {bookmarked ? 'Unbookmark' : 'Bookmark'}
-          </Button>{' '}
+            {bookmarked ? "Unbookmark" : "Bookmark"}
+          </Button>{" "}
           <Button
             href={repo.html_url}
             target="_blank"
