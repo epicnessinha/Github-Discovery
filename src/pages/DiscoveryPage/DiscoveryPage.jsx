@@ -44,10 +44,6 @@ const DiscoveryPage = () => {
           <RepositoryCard key={repo.id} repo={repo} bookmarks={bookmarks} setBookmarks={setBookmarks} toggleTopics={toggleTopics} />
         ))}
       </div>
-      <button onClick={() => {
-        localStorage.removeItem('token');
-        navigate('/login');
-      }}>Logout</button>
     </div>
   );
 };

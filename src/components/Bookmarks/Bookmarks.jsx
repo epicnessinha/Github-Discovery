@@ -22,6 +22,8 @@ const Bookmarks = () => {
         <RepositoryCard
           key={repo.id}
           repo={repo}
+          bookmarks={bookmarkedRepos}
+          setBookmarks={setBookmarkedRepos}
           onRemoveBookmark={handleRemoveBookmark}
         />
       ))}
