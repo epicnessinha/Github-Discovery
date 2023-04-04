@@ -4,6 +4,7 @@ import "./SortDropdown.css";
 const SortDropdown = ({ setSort }) => {
   const handleSortChange = (e) => {
     setSort(e.target.value);
+    localStorage.setItem("sort", e.target.value);
   };
 
   return (

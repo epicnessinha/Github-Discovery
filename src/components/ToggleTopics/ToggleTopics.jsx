@@ -1,60 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
+import { ButtonGroup, Button } from "react-bootstrap";
 import "./ToggleTopics.css";
 
-const ToggleTopics = ({ setTopics }) => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedTopics, setSelectedTopics] = useState([]);
-
-  const handleTopicChange = (topic) => {
-    if (selectedTopics.includes(topic)) {
-      setSelectedTopics(selectedTopics.filter((t) => t !== topic));
+const ToggleTopics = ({ activeTopics, setActiveTopics, topics }) => {
+  const handleToggle = (topic) => {
+    if (activeTopics.includes(topic)) {
+      setActiveTopics(activeTopics.filter((t) => t !== topic));
     } else {
-      setSelectedTopics([...selectedTopics, topic]);
+      setActiveTopics([...activeTopics, topic]);
     }
   };
 
-  const handleApply = () => {
-    setTopics(selectedTopics);
-    setIsOpen(false);
-  };
-
   return (
-    <div className="dropdown-container">
-      <button className="toggle-button" onClick={() => setIsOpen(!isOpen)}>
-        Toggle Topics
-      </button>
-      {isOpen && (
-        <div className="dropdown">
-          <ul>
-            <li
-              className={selectedTopics.includes("javascript") ? "selected" : ""}
-              onClick={() => handleTopicChange("javascript")}
-            >
-              JavaScript
-            </li>
-            <li
-              className={selectedTopics.includes("react") ? "selected" : ""}
-              onClick={() => handleTopicChange("react")}
-            >
-              React
-            </li>
-            <li
-              className={selectedTopics.includes("python") ? "selected" : ""}
-              onClick={() => handleTopicChange("python")}
-            >
-              Python
-            </li>
-            <li
-              className={selectedTopics.includes("java") ? "selected" : ""}
-              onClick={() => handleTopicChange("java")}
-            >
-              Java
-            </li>
-          </ul>
-          <button onClick={handleApply}>Apply</button>
-        </div>
-      )}
-    </div>
+    <ButtonGroup className="mt-3 mb-3">
+      {topics.map((topic) => (
+        <Button
+          key={topic}
+          variant={activeTopics.includes(topic) ? "primary" : "outline-primary"}
+          onClick={() => handleToggle(topic)}
+        >
+          {topic}
+        </Button>
+      ))}
+    </ButtonGroup>
   );
 };
 
