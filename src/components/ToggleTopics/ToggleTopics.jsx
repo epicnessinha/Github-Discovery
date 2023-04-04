@@ -1,6 +1,6 @@
-import React from 'react';
-import { ButtonGroup, Button } from 'react-bootstrap';
-import "./ToggleTopics.css"
+import React from "react";
+import { ButtonGroup, Button } from "react-bootstrap";
+import "./ToggleTopics.css";
 
 const ToggleTopics = ({ activeTopics, setActiveTopics, topics }) => {
   const handleToggle = (topic) => {
@@ -16,7 +16,7 @@ const ToggleTopics = ({ activeTopics, setActiveTopics, topics }) => {
       {topics.map((topic) => (
         <Button
           key={topic}
-          variant={activeTopics.includes(topic) ? 'primary' : 'outline-primary'}
+          variant={activeTopics.includes(topic) ? "primary" : "outline-primary"}
           onClick={() => handleToggle(topic)}
         >
           {topic}

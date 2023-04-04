@@ -1,6 +1,6 @@
-import React from "react";
-import { Button } from "react-bootstrap";
-import "./Navbar.css";
+import React from 'react';
+import { Button } from 'react-bootstrap';
+import './Navbar.css';
 
 const Navbar = ({ topics, selectedTopics, handleTopicToggle }) => {
   return (
@@ -10,6 +10,7 @@ const Navbar = ({ topics, selectedTopics, handleTopicToggle }) => {
           key={topic}
           variant={selectedTopics.includes(topic) ? 'primary' : 'outline-primary'}
           onClick={() => handleTopicToggle(topic)}
+          className="topic-button"
         >
           {topic}
         </Button>

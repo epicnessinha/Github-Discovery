@@ -38,13 +38,10 @@ const DiscoveryPage = () => {
     fetchRepos();
   }, [sort]);
 
-  const handleTopicToggle = (topic) => {
-    if (selectedTopics.includes(topic)) {
-      setSelectedTopics(selectedTopics.filter((t) => t !== topic));
-    } else {
-      setSelectedTopics([...selectedTopics, topic]);
-    }
+  const handleTopicToggle = (selected) => {
+    setSelectedTopics(selected);
   };
+  
 
   const renderRepoRow = (topic) => {
     return repos[topic]?.map((repo) => (
@@ -66,7 +63,6 @@ const DiscoveryPage = () => {
         handleTopicToggle={handleTopicToggle}
       />
       <Bookmarks bookmarks={bookmarks} setBookmarks={setBookmarks} />
-      <SortDropdown setSort={setSort} />
       {topics.map((topic) => (
   <div key={topic}>
     <h2>{topic}</h2>

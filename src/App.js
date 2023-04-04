@@ -1,9 +1,9 @@
-
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login/Login";
-import DiscoveryPage from "./pages/DiscoveryPage/DiscoveryPage";
 import UserAccount from "./pages/UserAccount/UserAccount";
+import DiscoveryPage from "./pages/DiscoveryPage/DiscoveryPage";
+
 
 const App = () => {
   const [user, setUser] = useState(null);
@@ -14,7 +14,7 @@ const App = () => {
         <Route path="/" element={<Login setUser={setUser} />} />
         <Route
           path="/discovery"
-          element={user ? <DiscoveryPage /> : <Navigate to="/login" />}
+          element={user ? <DiscoveryPage user={user} /> : <Navigate to="/login" />}
         />
         <Route
           path="/edit-profile"
@@ -32,6 +32,7 @@ const App = () => {
 };
 
 export default App;
+
 
 
 /* CODIGO PARA TESTAR SÓ A DISCOVERY PAGE SEM ESTAR SPR A FAZER LOGIN */

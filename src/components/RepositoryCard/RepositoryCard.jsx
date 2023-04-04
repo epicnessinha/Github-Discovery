@@ -25,7 +25,7 @@ const RepositoryCard = ({ repo, bookmarks, setBookmarks }) => {
           <Card.Img variant="top" src={repo.owner.avatar_url} />
           <Card.Body>
             <Card.Title>{repo.name}</Card.Title>
-            <Card.Text>{repo.description}</Card.Text>
+            {/* <Card.Text>{repo.description}</Card.Text> */}
           </Card.Body>
           <Card.Footer>
             <div className="bookmark-icon" onClick={toggleBookmark}>
