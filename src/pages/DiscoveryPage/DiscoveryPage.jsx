@@ -1,49 +1,85 @@
-/* eslint-disable no-undef */
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Navbar from '../../components/Navbar/Navbar';
-import RepositoryCard from '../../components/RepositoryCard/RepositoryCard';
-import SortDropdown from '../../components/SortDropdown/SortDropdown';
-import { popularRepos } from '../../services/apiCalls/apiCalls';
-import Header from '../../components/Header/Header';
-import Bookmarks from '../../components/Bookmarks/Bookmarks';
-import ToggleTopics from '../../components/ToggleTopics/ToggleTopics';
-import './DiscoveryPage.css';
+// DiscoveryPage.js
+
+import React, { useState, useEffect } from "react";
+import Header from "../../components/Header/Header";
+import Navbar from "../../components/Navbar/Navbar";
+import Bookmarks from "../../components/Bookmarks/Bookmarks";
+import SortDropdown from "../../components/SortDropdown/SortDropdown";
+import RepositoryCard from "../../components/RepositoryCard/RepositoryCard";
+import { fetchPopularReposByTopics } from "../../services/apiCalls/apiCalls";
+import { saveToLocal, loadFromLocal } from "../../utils/persistence";
+import "./DiscoveryPage.css";
+
+const topics = ["javascript", "java", "python", "ruby", "php"];
 
 const DiscoveryPage = () => {
-  const [repos, setRepos] = useState([]);
-  const [topic, setTopic] = useState('javascript+python+ruby+java');
-  const [sort, setSort] = useState('stars');
-  const [bookmarks, setBookmarks] = useState([]);
-  const [toggleTopics, setToggleTopics] = useState([]);
-  const navigate = useNavigate();
+  const [bookmarks, setBookmarks] = useState(loadFromLocal("bookmarks") || []);
+  const [repos, setRepos] = useState({});
+  const [sort, setSort] = useState(loadFromLocal("sort") || {});
+  const [selectedTopics, setSelectedTopics] = useState(loadFromLocal("selectedTopics") || []);
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (!token) {
-      // Redirect the user to the login page if they are not logged in
-      navigate('/login');
-      return;
-    }
-    const fetchData = async () => {
-      const fetchedRepos = await popularRepos(topic, sort);
+    saveToLocal("selectedTopics", selectedTopics);
+  }, [selectedTopics]);
+
+  useEffect(() => {
+    saveToLocal("sort", sort);
+  }, [sort]);
+
+  useEffect(() => {
+    const fetchRepos = async () => {
+      const fetchedRepos = await fetchPopularReposByTopics(topics, sort);
       setRepos(fetchedRepos);
     };
-    fetchData();
-  }, [topic, sort, navigate]);
+    fetchRepos();
+  }, [sort]);
+
+  const handleTopicToggle = (topic) => {
+    if (selectedTopics.includes(topic)) {
+      setSelectedTopics(selectedTopics.filter((t) => t !== topic));
+    } else {
+      setSelectedTopics([...selectedTopics, topic]);
+    }
+  };
+
+  const handleSortChange = (topic, value) => {
+    setSort({ ...sort, [topic]: value });
+  };
+
+  const renderRepoRow = (topic) => {
+    return repos[topic]?.map((repo) => (
+      <RepositoryCard
+        key={repo.id}
+        repo={repo}
+        bookmarks={bookmarks}
+        setBookmarks={setBookmarks}
+      />
+    ));
+  };
 
   return (
     <div>
       <Header isLoggedIn={true} />
-      <Navbar setTopic={setTopic} />
+      <Navbar
+        topics={topics}
+        selectedTopics={selectedTopics}
+        handleTopicToggle={handleTopicToggle}
+      />
       <Bookmarks bookmarks={bookmarks} setBookmarks={setBookmarks} />
-      <ToggleTopics toggleTopics={toggleTopics} setToggleTopics={setToggleTopics} />
-      <SortDropdown setSort={setSort} />
-      <div className="repo-container">
-        {repos.map((repo) => (
-          <RepositoryCard key={repo.id} repo={repo} bookmarks={bookmarks} setBookmarks={setBookmarks} toggleTopics={toggleTopics} />
-        ))}
-      </div>
+      {topics.map((topic) => (
+        <div key={topic}>
+          {selectedTopics.includes(topic) && (
+            <>
+              <h2>{topic}</h2>
+              <SortDropdown
+                value={sort[topic]}
+                onChange={(value) => handleSortChange(topic, value)}
+              />
+              <div className="repo-container">{renderRepoRow(topic)}</div>
+            </>
+          )}
+        </div>
+      ))}
     </div>
   );
 };

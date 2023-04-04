@@ -1,46 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { Button } from "react-bootstrap";
 import "./Navbar.css";
 
-const Navbar = ({ setTopic }) => {
-  const [selectedTopics, setSelectedTopics] = useState([]);
-  const topics = ["javascript", "python", "ruby", "java"];
-
-  useEffect(() => {
-    if (selectedTopics.length > 0) {
-      setTopic(selectedTopics.join("+"));
-    } else {
-      setTopic("javascript+python+ruby+java");
-    }
-  }, [selectedTopics, setTopic]);
-
-  const handleTopicSelection = (topic) => {
-    const index = selectedTopics.indexOf(topic);
-    if (index === -1) {
-      setSelectedTopics([...selectedTopics, topic]);
-    } else {
-      const updatedSelectedTopics = [...selectedTopics];
-      updatedSelectedTopics.splice(index, 1);
-      setSelectedTopics(updatedSelectedTopics);
-    }
-  };
-
-  const topicIsSelected = (topic) => {
-    return selectedTopics.indexOf(topic) !== -1;
-  };
-
+const Navbar = ({ selectedTopics, handleTopicToggle }) => {
   return (
-    <nav>
-      {topics.map((topic) => (
-        <label key={topic}>
-          <input
-            type="checkbox"
-            checked={topicIsSelected(topic)}
-            onChange={() => handleTopicSelection(topic)}
-          />
+    <div className="navbar">
+      {['javascript', 'python', 'ruby', 'java'].map((topic) => (
+        <Button
+          key={topic}
+          variant={selectedTopics.includes(topic) ? 'primary' : 'outline-primary'}
+          onClick={() => handleTopicToggle(topic)}
+        >
           {topic}
-        </label>
+        </Button>
       ))}
-    </nav>
+    </div>
   );
 };
 
