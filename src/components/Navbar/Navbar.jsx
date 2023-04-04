@@ -2,10 +2,10 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import "./Navbar.css";
 
-const Navbar = ({ selectedTopics, handleTopicToggle }) => {
+const Navbar = ({ topics, selectedTopics, handleTopicToggle }) => {
   return (
     <div className="navbar">
-      {['javascript', 'python', 'ruby', 'java'].map((topic) => (
+      {topics.map((topic) => (
         <Button
           key={topic}
           variant={selectedTopics.includes(topic) ? 'primary' : 'outline-primary'}

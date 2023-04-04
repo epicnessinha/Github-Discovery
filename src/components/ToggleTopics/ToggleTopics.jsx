@@ -1,11 +1,8 @@
-// ToggleTopics.js
 import React from 'react';
 import { ButtonGroup, Button } from 'react-bootstrap';
 import "./ToggleTopics.css"
 
-const ToggleTopics = ({ activeTopics, setActiveTopics }) => {
-  const topics = ['javascript', 'python', 'ruby', 'java'];
-
+const ToggleTopics = ({ activeTopics, setActiveTopics, topics }) => {
   const handleToggle = (topic) => {
     if (activeTopics.includes(topic)) {
       setActiveTopics(activeTopics.filter((t) => t !== topic));
