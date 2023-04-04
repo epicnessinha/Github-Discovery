@@ -6,8 +6,8 @@ import Navbar from "../../components/Navbar/Navbar";
 import Bookmarks from "../../components/Bookmarks/Bookmarks";
 import SortDropdown from "../../components/SortDropdown/SortDropdown";
 import RepositoryCard from "../../components/RepositoryCard/RepositoryCard";
-import { fetchPopularReposByTopics } from "../../services/apiCalls/apiCalls";
-import { saveToLocal, loadFromLocal } from "../../utils/persistence";
+import { fetchPopularReposByTopics } from "../../services/apiCalls";
+import { saveToLocal, loadFromLocal } from "../../utils/localStorage";
 import "./DiscoveryPage.css";
 
 const topics = ["javascript", "java", "python", "ruby", "php"];
@@ -62,12 +62,13 @@ const DiscoveryPage = () => {
         selectedTopics={selectedTopics}
         handleTopicToggle={handleTopicToggle}
       />
+       <SortDropdown setSort={setSort} />
       <Bookmarks bookmarks={bookmarks} setBookmarks={setBookmarks} />
       {topics.map((topic) => (
   <div key={topic}>
     <h2>{topic}</h2>
     <div className="sort-dropdown-container">
-      <SortDropdown setSort={setSort} />
+      {/* <SortDropdown setSort={setSort} /> */}
     </div>
     <div className="repo-container">{renderRepoRow(topic)}</div>
   </div>

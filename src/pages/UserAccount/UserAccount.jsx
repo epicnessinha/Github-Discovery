@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { getUser, updateUser } from "../../services/apiCalls/apiCalls";
+import { getUser, updateUser } from "../../services/apiCalls";
 import "./UserAccount.css"
 
 const UserAccount = ({ user, setUser }) => {
