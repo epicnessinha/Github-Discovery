@@ -13,22 +13,26 @@ import "./DiscoveryPage.css";
 const topics = ["javascript", "java", "python", "ruby", "php"];
 
 const DiscoveryPage = () => {
-  const [bookmarks, setBookmarks] = useState(loadFromLocal("bookmarks") || []);
+  const [bookmarks, setBookmarks] = useState([]);
   const [repos, setRepos] = useState({});
-  const [sort, setSort] = useState(loadFromLocal("sort") || {});
+  const [sort, setSort] = useState(loadFromLocal("sort") || "stars");
   const [selectedTopics, setSelectedTopics] = useState(loadFromLocal("selectedTopics") || []);
-
-  useEffect(() => {
-    saveToLocal("selectedTopics", selectedTopics);
-  }, [selectedTopics]);
 
   useEffect(() => {
     saveToLocal("sort", sort);
   }, [sort]);
 
   useEffect(() => {
+    saveToLocal("selectedTopics", selectedTopics);
+  }, [selectedTopics]);
+
+  useEffect(() => {
     const fetchRepos = async () => {
-      const fetchedRepos = await fetchPopularReposByTopics(topics, sort);
+      const fetchedRepos = {};
+      for (const topic of topics) {
+        const reposForTopic = await fetchPopularReposByTopics(topic, sort);
+        fetchedRepos[topic] = reposForTopic;
+      }
       setRepos(fetchedRepos);
     };
     fetchRepos();
@@ -40,10 +44,6 @@ const DiscoveryPage = () => {
     } else {
       setSelectedTopics([...selectedTopics, topic]);
     }
-  };
-
-  const handleSortChange = (topic, value) => {
-    setSort({ ...sort, [topic]: value });
   };
 
   const renderRepoRow = (topic) => {
@@ -66,20 +66,16 @@ const DiscoveryPage = () => {
         handleTopicToggle={handleTopicToggle}
       />
       <Bookmarks bookmarks={bookmarks} setBookmarks={setBookmarks} />
+      <SortDropdown setSort={setSort} />
       {topics.map((topic) => (
-        <div key={topic}>
-          {selectedTopics.includes(topic) && (
-            <>
-              <h2>{topic}</h2>
-              <SortDropdown
-                value={sort[topic]}
-                onChange={(value) => handleSortChange(topic, value)}
-              />
-              <div className="repo-container">{renderRepoRow(topic)}</div>
-            </>
-          )}
-        </div>
-      ))}
+  <div key={topic}>
+    <h2>{topic}</h2>
+    <div className="sort-dropdown-container">
+      <SortDropdown setSort={setSort} />
+    </div>
+    <div className="repo-container">{renderRepoRow(topic)}</div>
+  </div>
+))}
     </div>
   );
 };

@@ -1,22 +1,23 @@
 // persistence.js
 
 export const saveToLocal = (key, value) => {
-    try {
-      localStorage.setItem(key, JSON.stringify(value));
-    } catch (error) {
-      console.error("Error saving to local storage:", error);
+  try {
+    const serializedValue = JSON.stringify(value);
+    localStorage.setItem(key, serializedValue);
+  } catch (error) {
+    console.error("Error saving to local storage:", error);
+  }
+};
+
+export const loadFromLocal = (key) => {
+  try {
+    const serializedValue = localStorage.getItem(key);
+    if (serializedValue === null) {
+      return undefined;
     }
-  };
-  
-  export const loadFromLocal = (key) => {
-    try {
-      const value = localStorage.getItem(key);
-      if (value) {
-        return JSON.parse(value);
-      }
-    } catch (error) {
-      console.error("Error loading from local storage:", error);
-    }
-    return null;
-  };
-  
+    return JSON.parse(serializedValue);
+  } catch (error) {
+    console.error("Error loading from local storage:", error);
+    return undefined;
+  }
+};
