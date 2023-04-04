@@ -1,4 +1,4 @@
-// persistence.js
+/* eslint-disable no-undef */
 
 export const saveToLocal = (key, value) => {
   try {
