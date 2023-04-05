@@ -2,12 +2,13 @@
   max-width: 500px;
   margin: 0 auto;
   padding: 3rem;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.85);
   border-radius: 0.5rem;
   color: #ffffff;
   text-align: left;
   margin-bottom: 4rem;
   margin-top: 5rem;
+  border: 2px solid red;
 }
 
 .EditForm h1 {
