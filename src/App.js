@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login/Login";
-import UserAccount from "./pages/UserAccount/UserAccount";
+import MyAccount from "./pages/MyAccount/MyAccount"
 import DiscoveryPage from "./pages/DiscoveryPage/DiscoveryPage";
 
 
@@ -17,10 +17,10 @@ const App = () => {
           element={user ? <DiscoveryPage user={user} /> : <Navigate to="/login" />}
         />
         <Route
-          path="/edit-profile"
+          path="/my-account"
           element={
             user ? (
-              <UserAccount user={user} setUser={setUser} />
+              <MyAccount user={user} setUser={setUser} />
             ) : (
               <Navigate to="/login" />
             )

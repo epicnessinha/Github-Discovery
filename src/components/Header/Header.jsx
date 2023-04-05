@@ -19,7 +19,7 @@ function Header(props) {
           </NavLink>
         </li>
         <li className="header-nav-item">
-          <NavLink exact to="/edit-profile" className="header-nav-link">
+          <NavLink exact to="/my-account" className="header-nav-link">
             Username
           </NavLink>
         </li>

@@ -3,10 +3,10 @@ import axios from "axios";
 const API_BASE_URL = "http://localhost:3000";
 const GITHUB_API_BASE_URL = "https://api.github.com";
 
-export const fetchPopularReposByTopics = async (topic, sort) => {
+export const fetchPopularReposByTopics = async (topic, sort, id) => {
   try {
     const response = await axios.get(
-      `${GITHUB_API_BASE_URL}/search/repositories?q=topic:${topic}&sort=${sort}&order=desc`
+      `${GITHUB_API_BASE_URL}/search/repositories?q=topic:${topic}&sort=${sort}&id=${id}&order=desc`
     );
     return response.data.items;
   } catch (error) {

@@ -4,21 +4,24 @@
 
 src/
 |-- components/
-|   |-- Navbar/
 |   |-- RepositoryCard/
-|   |-- ToggleTopic/
+|   |-- ToggleTopics/
 |   |-- SortDropdown/
 |   |-- Bookmarks/
 |   |-- Header
+|   |-- EditForm
+|   |-- LoginForm
+|   |-- FavoritesRow
 |-- pages/
 |   |-- DiscoveryPage/
 |   |-- Login/ (home page)
-|   |-- UserAccount/ 
+|   |-- MyAccount/ 
 |-- services/
 |   |-- apiCalls.js
+|   |-- auth.js
 |-- utils/
-|   |-- persistence.js
-|   |-- validations.js
+|   |-- localStorage.js|   
+|-- validations.js
 |-- context/
 |   |-- AuthContext.js
 |-- App.js
@@ -26,9 +29,10 @@ src/
 |-- index.js
 
 
+## Run
 ### `npm install`
 
 ### `json-server --watch db.json`
-### `npm start`
+### `npm start` or click https://githubdiscovery-vanessa.netlify.app/
 
 
