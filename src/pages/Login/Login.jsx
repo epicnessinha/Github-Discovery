@@ -20,7 +20,7 @@ const Login = ({ setUser }) => {
 
   return (
     <div className="container">
-      <h1 className="red-text">Welcome to Github Discovery!</h1>
+      <h1 className="red-text">Github Discovery</h1>
       <div className="form">
         <LoginForm onLogin={handleLogin} />
       </div>

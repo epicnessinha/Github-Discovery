@@ -8,7 +8,12 @@
   transition: all 0.3s ease-in-out;
   cursor: pointer;
   justify-content: space-between;
+  background-image: url("../../assets/netflix2.png");
+  background-size: cover;
+  border: 2px solid rgb(251, 244, 244);
+  
 }
+
 
 .repo-card:hover {
   transform: translateY(-10px);
@@ -16,9 +21,11 @@
 }
 
 .repo-card .card-img-top {
-  height: 60%;
+  height: 56%;
   object-fit: cover;
   align-items: center;
+  margin-left: 2.5rem;
+  margin-top: 2.5rem;
 }
 
 .repo-card .card-body {
@@ -27,6 +34,7 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 10px;
+ 
 }
 
 .repo-card .card-title {
@@ -34,22 +42,25 @@
   font-size: 20px;
   margin-bottom: 5px;
   text-align: center;
+  color: white;
 }
 
 .repo-card .card-text {
   font-size: 14px;
   line-height: 1.2;
   margin-bottom: 10px;
+
 }
 
 .repo-card .card-footer {
   position: absolute;
   bottom: 0;
-  left: 0;
+  margin-left: 0.5rem;
+  margin-bottom: 0.5rem;
   width: 10%;
-  background-color: rgba(0, 0, 0, 0.8);
-  color: #fff;
+  background-color: rgb(6, 5, 5);
   padding: 10px;
+  border-radius: 0.5rem;
 }
 
 .repo-card .btn {
@@ -60,19 +71,21 @@
   transform: scale(1.1);
 }
 .repo-card:hover {
-  transform: scale(1.05);
+  transform: scale(1.2);
   transition: transform 0.3s ease-in-out;
 }
 
 .repo-card .card-footer {
   display: flex;
   justify-content: space-between;
+  
 }
 
 .repo-card .card-text {
   height: 7rem;
   overflow: hidden;
   text-overflow: ellipsis;
+  
 }
 
 .repo-card .btn {

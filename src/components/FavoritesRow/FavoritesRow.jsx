@@ -30,8 +30,8 @@ const FavoritesRow = ({ repos=[], bookmarks, setBookmarks }) => {
   };
 
   return (
-    <div>
-      <h2>My Bookmarks</h2>
+    <div className="title">
+      <p>My Bookmarks</p>
       <div className="repo-container">{renderFavoriteRepoCards()}</div>
     </div>
   );
