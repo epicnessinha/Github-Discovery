@@ -1,14 +1,31 @@
 .header-nav {
   display: flex;
-  justify-content: flex-end;
-  margin: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #d5dce3;
+  
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+}
+
+.github-logo {
+  width: 100px;
+  height: 100px;
+  margin-right: 4rem;
+  margin-left: 2rem;
+ 
 }
 
 .header-nav-list {
+  list-style: none;
   display: flex;
-  list-style-type: none;
   margin: 0;
   padding: 0;
+  
 }
 
 .header-nav-item {
@@ -16,8 +33,14 @@
 }
 
 .header-nav-link {
-  color: #0b0b0b;
   text-decoration: none;
-  font-weight: bold;
-  font-size: 1.2rem;
+  color: #080808;
+  font-size: 30px;
+  font-weight: bolder;
+  margin-right: 3rem;
+  
+}
+
+.header-nav-link:hover {
+  text-decoration: underline;
 }

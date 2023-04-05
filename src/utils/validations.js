@@ -2,13 +2,13 @@ const uppercaseRegExp = /(?=.*?[A-Z])/
 const lowercaseRegExp = /(?=.*?[a-z])/
 const digitsRegExp = /(?=.*?[0-9])/
 const minLengthRegExp = /.{6,}/
-const emailRegExp = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+const emailRegExp = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/
 
 export const validateForm = (user) => {
   let validationError
   if (
     user.password.length === 0 ||
-    user.name.length === 0 ||
+    user.username.length === 0 ||
     user.email.length === 0
   ) {
     validationError = "Every field must to be filled"
@@ -27,3 +27,15 @@ export const validateForm = (user) => {
   }
   return validationError
 }
+
+export const validateLoginForm = (username, password) => {
+  let validationError;
+
+  if (username.length === 0 || password.length === 0) {
+    validationError = "Both username and password fields must be filled";
+  } else {
+    validationError = "no error";
+  }
+
+  return validationError;
+};
