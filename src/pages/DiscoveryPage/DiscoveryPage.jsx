@@ -1,7 +1,6 @@
-
 import React, { useState, useEffect } from "react";
 import Header from "../../components/Header/Header";
-import Navbar from "../../components/ToggleTopics/ToggleTopics";
+import ToggleTopics from "../../components/ToggleTopics/ToggleTopics";
 import Bookmarks from "../../components/Bookmarks/Bookmarks";
 import SortDropdown from "../../components/SortDropdown/SortDropdown";
 import RepositoryCard from "../../components/RepositoryCard/RepositoryCard";
@@ -16,7 +15,11 @@ const DiscoveryPage = () => {
   const [bookmarks, setBookmarks] = useState([]);
   const [repos, setRepos] = useState({});
   const [sort, setSort] = useState(loadFromLocal("sort") || "stars");
-  const [selectedTopics, setSelectedTopics] = useState(loadFromLocal("selectedTopics") || []);
+  const [selectedTopics, setSelectedTopics] = useState(() => {
+    const storedTopics = loadFromLocal("selectedTopics");
+    return Array.isArray(storedTopics) ? storedTopics : [];
+  });
+  
 
   useEffect(() => {
     saveToLocal("sort", sort);
@@ -39,9 +42,12 @@ const DiscoveryPage = () => {
   }, [sort]);
 
   const handleTopicToggle = (selected) => {
-    setSelectedTopics(selected);
+    if (selectedTopics.includes(selected)) {
+      setSelectedTopics(selectedTopics.filter((topic) => topic !== selected));
+    } else {
+      setSelectedTopics([...selectedTopics, selected]);
+    }
   };
-  
 
   const renderRepoRow = (topic) => {
     return repos[topic]?.map((repo) => (
@@ -54,26 +60,27 @@ const DiscoveryPage = () => {
     ));
   };
 
+  const topicsToRender = selectedTopics.length > 0 ? selectedTopics : topics;
+
   return (
     <div>
       <Header isLoggedIn={true} />
       <FavoritesRow />
-      <Navbar
+      <ToggleTopics
         topics={topics}
         selectedTopics={selectedTopics}
         handleTopicToggle={handleTopicToggle}
       />
-       {/* <SortDropdown setSort={setSort} /> */}
       <Bookmarks bookmarks={bookmarks} setBookmarks={setBookmarks} />
-      {topics.map((topic) => (
-  <div key={topic}>
-    <h2>{topic}</h2>
-    <div className="sort-dropdown-container">
-      <SortDropdown setSort={setSort} />
-    </div>
-    <div className="repo-container">{renderRepoRow(topic)}</div>
-  </div>
-))}
+      {topicsToRender.map((topic) => (
+        <div key={topic}>
+          <h2>{topic}</h2>
+          <div className="sort-dropdown-container">
+            <SortDropdown setSort={setSort} />
+          </div>
+          <div className="repo-container">{renderRepoRow(topic)}</div>
+        </div>
+      ))}
     </div>
   );
 };
