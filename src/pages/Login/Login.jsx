@@ -1,23 +1,23 @@
 import React from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { login } from "../../services/apiCalls";
+
 import LoginForm from "../../components/LoginForm/LoginForm";
 import "./Login.css";
 
 const Login = ({ setUser }) => {
   const navigate = useNavigate();
 
-  const handleLogin = async (username, password) => {
+  const handleLogin = async (user) => {
     try {
-      const userId = await login(username, password);
+      const { username, id: userId } = user;
       localStorage.setItem("token", userId);
-      setUser({ username, password });
+      setUser({ id: userId, username });
       navigate("/discovery");
     } catch (error) {
       console.error(error.message);
     }
   };
-
+  
   return (
     <div className="container">
       <h1 className="red-text">Github Discovery</h1>
