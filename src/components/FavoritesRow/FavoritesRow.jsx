@@ -1,7 +1,10 @@
 import React from "react";
 import RepositoryCard from "../RepositoryCard/RepositoryCard";
+import "./FavoritesRow.css"
 
-const FavoritesRow = ({ repos, bookmarks, setBookmarks }) => {
+
+//empty array in repos is just a quick fix for now, need to remove
+const FavoritesRow = ({ repos=[], bookmarks, setBookmarks }) => {
   const favoriteRepos = repos.filter((repo) => bookmarks.includes(repo.id));
 
   const toggleBookmark = (repoId) => {
@@ -28,7 +31,7 @@ const FavoritesRow = ({ repos, bookmarks, setBookmarks }) => {
 
   return (
     <div>
-      <h2>Favorite Repositories</h2>
+      <h2>My Bookmarks</h2>
       <div className="repo-container">{renderFavoriteRepoCards()}</div>
     </div>
   );

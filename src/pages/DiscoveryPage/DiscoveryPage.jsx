@@ -1,11 +1,11 @@
-// DiscoveryPage.js
 
 import React, { useState, useEffect } from "react";
 import Header from "../../components/Header/Header";
-import Navbar from "../../components/Navbar/Navbar";
+import Navbar from "../../components/ToggleTopics/ToggleTopics";
 import Bookmarks from "../../components/Bookmarks/Bookmarks";
 import SortDropdown from "../../components/SortDropdown/SortDropdown";
 import RepositoryCard from "../../components/RepositoryCard/RepositoryCard";
+import FavoritesRow from "../../components/FavoritesRow/FavoritesRow";
 import { fetchPopularReposByTopics } from "../../services/apiCalls";
 import { saveToLocal, loadFromLocal } from "../../utils/localStorage";
 import "./DiscoveryPage.css";
@@ -57,18 +57,19 @@ const DiscoveryPage = () => {
   return (
     <div>
       <Header isLoggedIn={true} />
+      <FavoritesRow />
       <Navbar
         topics={topics}
         selectedTopics={selectedTopics}
         handleTopicToggle={handleTopicToggle}
       />
-       <SortDropdown setSort={setSort} />
+       {/* <SortDropdown setSort={setSort} /> */}
       <Bookmarks bookmarks={bookmarks} setBookmarks={setBookmarks} />
       {topics.map((topic) => (
   <div key={topic}>
     <h2>{topic}</h2>
     <div className="sort-dropdown-container">
-      {/* <SortDropdown setSort={setSort} /> */}
+      <SortDropdown setSort={setSort} />
     </div>
     <div className="repo-container">{renderRepoRow(topic)}</div>
   </div>

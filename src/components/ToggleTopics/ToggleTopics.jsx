@@ -1,10 +1,12 @@
 
 import React from 'react';
 import { Button } from 'react-bootstrap';
-import './Navbar.css';
+import './ToggleTopics.css';
 
 const Navbar = ({ topics, selectedTopics, handleTopicToggle }) => {
   return (
+    <div>
+    <h3>Toggle Topics to show</h3>
     <div className="navbar">
       {topics.map((topic) => (
         <Button
@@ -16,6 +18,7 @@ const Navbar = ({ topics, selectedTopics, handleTopicToggle }) => {
           {topic}
         </Button>
       ))}
+    </div>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getUser, updateUser } from "../../services/apiCalls";
-import "./UserAccount.css"
+import "./MyAccount.css"
 
 const UserAccount = ({ user, setUser }) => {
   const [username, setUsername] = useState(user.username);
@@ -30,7 +30,7 @@ const UserAccount = ({ user, setUser }) => {
   return (
     <div className="container d-flex justify-content-center align-items-center vh-100">
       <div className="col-lg-6 col-md-8 col-sm-10">
-        <h1 className="text-center mb-4">Edit Profile</h1>
+        <h1 className="text-center mb-4">My Account</h1>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="username">Username:</label>
