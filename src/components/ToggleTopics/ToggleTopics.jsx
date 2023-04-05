@@ -5,7 +5,7 @@ import './ToggleTopics.css';
 
 const Navbar = ({ topics, selectedTopics, handleTopicToggle }) => {
   return (
-    <div>
+    <div className='topic-title'>
     <h3>Toggle Topics to show</h3>
     <div className="navbar">
       {topics.map((topic) => (

@@ -1,4 +1,36 @@
+.topic-container {
+  display: flex;
+  justify-content: center; /* Center the items horizontally */
+  flex-wrap: wrap; /* Allow items to wrap to the next line if necessary */
+  margin-bottom: 20px; /* Add some space at the bottom of the container */
+}
+
 .topic-button {
-    margin-right: 10px;
-  }
+  background-color: rgba(242, 8, 8, 0.85);
+  color: #ffffff;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  border-radius: 2.5rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  margin-right: 50px; /* Add space between items */
+  margin-bottom: 15px; /* Add space between rows */
+  border: 2px solid rgb(251, 244, 244);
+}
+
+
   
+  
+
+  .topic-title {
+    font-weight: bold;
+    font-size: 1.5rem;
+
+    text-align: left;
+    color: white;
+    margin-left: 3rem;
+  } 

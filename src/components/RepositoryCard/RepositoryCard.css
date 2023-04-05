@@ -11,7 +11,6 @@
   background-image: url("../../assets/netflix2.png");
   background-size: cover;
   border: 2px solid rgb(251, 244, 244);
-  
 }
 
 
@@ -21,7 +20,7 @@
 }
 
 .repo-card .card-img-top {
-  height: 56%;
+  height: 45%;
   object-fit: cover;
   align-items: center;
   margin-left: 2.5rem;
@@ -40,9 +39,10 @@
 .repo-card .card-title {
   font-weight: bold;
   font-size: 20px;
-  margin-bottom: 5px;
+  margin-bottom: 1rem;
   text-align: center;
   color: white;
+  margin-left: 0rem;
 }
 
 .repo-card .card-text {
