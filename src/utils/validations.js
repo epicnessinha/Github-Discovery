@@ -39,3 +39,15 @@ export const validateLoginForm = (username, password) => {
 
   return validationError;
 };
+
+export const validateEditForm = (username) => {
+  let validationError;
+
+  if (username.length === 0) {
+    validationError = "Username field must be filled";
+  } else {
+    validationError = "no error";
+  }
+
+  return validationError;
+};
