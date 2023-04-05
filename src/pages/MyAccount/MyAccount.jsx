@@ -21,7 +21,7 @@ const MyAccount = ({ user, setUser }) => {
   return (
     <div className="container d-flex justify-content-center align-items-center vh-100">
       <div className="col-lg-6 col-md-8 col-sm-10">
-        <h1 className="text-center mb-4">My Account</h1>
+        <h1 className="title">My Account</h1>
         <EditForm
           username={username}
           setUsername={setUsername}
