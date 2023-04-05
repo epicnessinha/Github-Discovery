@@ -1,6 +1,6 @@
 import React from "react";
-import { updateUser } from "../../services/apiCalls";
-import { validateForm } from "../../utils/validations";
+import { updateUser, getUser } from "../../services/apiCalls";
+import { validateEditForm } from "../../utils/validations";
 import "./EditForm.css";
 
 const EditForm = ({
@@ -14,18 +14,19 @@ const EditForm = ({
 }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    const user = { username, email };
-    const validationError = validateForm(user);
-
+  
+    const validationError = validateEditForm(username);
+  
     if (validationError !== "no error") {
       setErrorMessage(validationError);
       return;
     }
-
+  
     try {
-      const updatedUser = await updateUser(userId, user);
-      setUser(updatedUser);
+      const existingUser = await getUser(userId);
+      const updatedUserData = { ...existingUser, username, email };
+      const updatedUser = await updateUser(userId, updatedUserData);
+      setUser((prevUser) => ({ ...prevUser, username: updatedUser.username, email: updatedUser.email }));
       setErrorMessage("");
     } catch (error) {
       setErrorMessage(error.message);

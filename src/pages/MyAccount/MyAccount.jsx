@@ -19,6 +19,10 @@ const MyAccount = ({ user, setUser }) => {
     fetchUser();
   }, [user.id]);
 
+  useEffect(() => {
+    localStorage.setItem("user", JSON.stringify(user));
+  }, [user]);
+
   return (
     <>
       <Header isLoggedIn={true} />
