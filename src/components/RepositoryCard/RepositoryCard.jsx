@@ -25,7 +25,7 @@ const RepositoryCard = ({ repo, bookmarks, setBookmarks }) => {
         <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
           <Card.Img variant="top" src={repo.owner.avatar_url} />
           <Card.Body>
-            <Card.Title>{repo.name}</Card.Title>
+            <Card.Title className="title">{repo.name}</Card.Title>
             {/* <Card.Text>{repo.description}</Card.Text> */}
           </Card.Body>
         </a>
