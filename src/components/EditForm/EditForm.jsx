@@ -1,7 +1,7 @@
 import React from "react";
 import { updateUser } from "../../services/apiCalls";
-import { validateForm } from "../../utils/validations"; 
-import "./EditForm.css"
+import { validateForm } from "../../utils/validations";
+import "./EditForm.css";
 
 const EditForm = ({
   username,
@@ -33,7 +33,8 @@ const EditForm = ({
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="EditForm">
+      <h1>Edit User</h1>
       <div className="form-group">
         <label htmlFor="username">Username:</label>
         <input
@@ -43,6 +44,7 @@ const EditForm = ({
           value={username}
           onChange={(e) => setUsername(e.target.value)}
           required
+          placeholder="Enter your username"
         />
       </div>
       <div className="form-group">
@@ -54,6 +56,7 @@ const EditForm = ({
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
+          placeholder="Enter your email address"
         />
       </div>
       <button type="submit" className="btn btn-primary btn-block">

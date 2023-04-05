@@ -1,12 +1,14 @@
 .LoginForm {
-    max-width: 500px;
-    margin: 0 auto;
-    padding: 3rem;
-    background-color: rgba(0, 0, 0, 0.75);
-    border-radius: 0.5rem;
-    color: #ffffff;
-    text-align: left;
-  }
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 3rem;
+  background-color: rgba(0, 0, 0, 0.85);
+  border-radius: 0.5rem;
+  color: #ffffff;
+  text-align: left;
+  border: 2px solid red;
+}
+
   
   .LoginForm h1 {
     font-size: 2rem;
@@ -62,5 +64,6 @@
     color: #ff0000;
     font-weight: 600;
     margin-top: 1rem;
+    
   }
   

@@ -24,7 +24,7 @@ const Login = ({ setUser }) => {
       <div className="form">
         <LoginForm onLogin={handleLogin} />
       </div>
-      <div>
+      <div className="new">
         <p>Don&apos;t have an account?</p>
         <div className="register">
           <Link to="/register">Register</Link>
