@@ -1,5 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import githublogo from "../../assets/githublogo.png";
 import "./Header.css";
 
 function Header(props) {
@@ -12,12 +13,14 @@ function Header(props) {
 
   return (
     <nav className="header-nav">
+      <div className="header-left">
+        <img src={githublogo} alt="GitHub Logo" className="github-logo" />
+
+        <NavLink exact to="/discovery" className="header-nav-link">
+          Discovery
+        </NavLink>
+      </div>
       <ul className="header-nav-list">
-        <li className="header-nav-item">
-          <NavLink exact to="/discovery" className="header-nav-link">
-            Discovery
-          </NavLink>
-        </li>
         <li className="header-nav-item">
           <NavLink exact to="/my-account" className="header-nav-link">
             Username

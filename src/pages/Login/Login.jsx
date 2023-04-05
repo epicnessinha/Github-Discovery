@@ -1,57 +1,33 @@
-/* eslint-disable no-undef */
-
-import React, { useState } from "react";
+import React from "react";
 import { useNavigate, Link } from "react-router-dom";
 import { login } from "../../services/apiCalls";
+import LoginForm from "../../components/LoginForm/LoginForm";
 import "./Login.css";
 
 const Login = ({ setUser }) => {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleLogin = async (username, password) => {
     try {
       const userId = await login(username, password);
       localStorage.setItem("token", userId);
       setUser({ username, password });
       navigate("/discovery");
     } catch (error) {
-      setErrorMessage(error.message);
+      console.error(error.message);
     }
   };
 
   return (
     <div className="container">
-      <h1>Sign In</h1>
+      <h1 className="red-text">Welcome to Github Discovery!</h1>
       <div className="form">
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username:</label>
-        <input
-          type="text"
-          id="username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-        />
-        <br />
-        <label htmlFor="password">Password:</label>
-        <input
-          type="password"
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <br />
-        <button type="submit">Submit</button>
-      </form>
+        <LoginForm onLogin={handleLogin} />
       </div>
-      {errorMessage && <p>{errorMessage}</p>}
       <div>
         <p>Don&apos;t have an account?</p>
         <div className="register">
-        <Link to="/register">Register</Link>
+          <Link to="/register">Register</Link>
         </div>
       </div>
     </div>
