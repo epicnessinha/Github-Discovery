@@ -3,30 +3,11 @@ import axios from "axios";
 const API_BASE_URL = "http://localhost:3000";
 const GITHUB_API_BASE_URL = "https://api.github.com";
 
-const apiClient = axios.create({
-  baseURL: API_BASE_URL,
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
-
-const githubApiClient = axios.create({
-  baseURL: GITHUB_API_BASE_URL,
-  headers: {
-    "Content-Type": "application/json",
-  },
-});
-
 export const fetchPopularReposByTopics = async (topic, sort, id) => {
   try {
-    const response = await githubApiClient.get(`/search/repositories`, {
-      params: {
-        q: `topic:${topic}`,
-        sort: sort,
-        id: id,
-        order: "desc",
-      },
-    });
+    const response = await axios.get(
+      `${GITHUB_API_BASE_URL}/search/repositories?q=topic:${topic}&sort=${sort}&id=${id}&order=desc`
+    );
     return response.data.items;
   } catch (error) {
     console.error("Error fetching popular repos:", error);
@@ -36,12 +17,9 @@ export const fetchPopularReposByTopics = async (topic, sort, id) => {
 
 export const login = async (username, password) => {
   try {
-    const response = await apiClient.get("/users", {
-      params: {
-        username: username,
-        password: password,
-      },
-    });
+    const response = await axios.get(
+      `${API_BASE_URL}/users?username=${username}&password=${password}`
+    );
     const data = response.data;
     if (data.length === 0) {
       throw new Error("Invalid username or password");
@@ -55,11 +33,7 @@ export const login = async (username, password) => {
 
 export const register = async (username, password, email) => {
   try {
-    const response = await apiClient.get("/users", {
-      params: {
-        username: username,
-      },
-    });
+    const response = await axios.get(`${API_BASE_URL}/users?username=${username}`);
     const data = response.data;
 
     if (data.length > 0) {
@@ -68,7 +42,7 @@ export const register = async (username, password, email) => {
 
     const newUser = { username, password, email };
 
-    const postResponse = await apiClient.post("/users", newUser);
+    const postResponse = await axios.post(`${API_BASE_URL}/users`, newUser);
 
     const createdUser = postResponse.data;
     return createdUser.id;
@@ -80,7 +54,9 @@ export const register = async (username, password, email) => {
 
 export const updateUser = async (id, updatedUser) => {
   try {
-    const response = await apiClient.put(`/users/${id}`, updatedUser);
+    const response = await axios.put(`${API_BASE_URL}/users/${id}`, updatedUser, {
+      headers: { "Content-Type": "application/json" },
+    });
 
     const data = response.data;
     console.log(data);
@@ -93,7 +69,7 @@ export const updateUser = async (id, updatedUser) => {
 
 export const getUser = async (id) => {
   try {
-    const response = await apiClient.get(`/users/${id}`);
+    const response = await axios.get(`${API_BASE_URL}/users/${id}`);
     const data = response.data;
     return data;
   } catch (error) {
