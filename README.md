@@ -11,6 +11,7 @@
 - API requests extremely slow (around 14 seconds);
 
 
+
 Sword Health Techical challenge where I was challanged to to build a Github repository discovery website with layouts inspired by Netflix, where users login to their accounts and see the popular repositories from Github by different topics.
 The user is able to do the sign in/sign up on the website, if the login is made with sucess the user will be able to visualize the github discovery page, where he is able to toggle the topics to show, sort the repos by dropdown (start, fork, last update). When the user click on a repository card, it will open in a new tab. The user is able to edit is personal info (username (required) and email). All the user options (categories, sort and account updates) persist locally.
 
