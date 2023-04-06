@@ -64,7 +64,7 @@ const DiscoveryPage = () => {
   return (
     <div>
       <Header isLoggedIn={true} />
-      <Bookmarks />
+      <FavoritesRow />
       <ToggleTopics
         topics={topics}
         selectedTopics={selectedTopics}

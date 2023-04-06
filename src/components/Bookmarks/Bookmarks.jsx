@@ -18,6 +18,7 @@ const Bookmarks = () => {
   };
 
   return (
+
     <div className="title">
     <p>My Bookmarks</p>
     <div className="repo-container">{renderFavoriteRepoCards()}</div>
@@ -31,6 +32,7 @@ const Bookmarks = () => {
           onRemoveBookmark={handleRemoveBookmark}
         />
       ))}
+
     </div>
     </div>
   );
