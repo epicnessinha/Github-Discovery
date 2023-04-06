@@ -1,51 +1,48 @@
-// AuthContext.js
 import React, { createContext, useState } from 'react';
 
 export const AuthContext = createContext();
 
 const AuthContextProvider = ({ children }) => {
   const [loggedInUserId, setLoggedInUserId] = useState(null);
-const [userBookmarks, setUserBookmarks] = useState({});
+  const [userBookmarks, setUserBookmarks] = useState({});
+  const [user, setUser] = useState(null);
 
+  const handleAddToBookmarks = (repo) => {
+    const updatedBookmarks = { ...userBookmarks };
+    if (!updatedBookmarks[loggedInUserId]) {
+      updatedBookmarks[loggedInUserId] = [];
+    }
+    const existingBookmark = updatedBookmarks[loggedInUserId].find((bookmark) => bookmark.id === repo.id);
+    if (!existingBookmark) {
+      updatedBookmarks[loggedInUserId].push(repo);
+      setUserBookmarks(updatedBookmarks);
+      saveToLocal(`userBookmarks_${loggedInUserId}`, updatedBookmarks[loggedInUserId]);
+    }
+  };
 
-const addToBookmarks = (repo) => {
-  if (!userBookmarks[loggedInUserId]?.some((bookmark) => bookmark.id === repo.id)) {
-    setUserBookmarks({
-      ...userBookmarks,
-      [loggedInUserId]: [...(userBookmarks[loggedInUserId] || []), repo],
-    });
-    saveToLocal(`userBookmarks_${loggedInUserId}`, [
-      ...(userBookmarks[loggedInUserId] || []),
-      repo,
-    ]);
-  }
-};
+  const handleRemoveFromBookmarks = (repo) => {
+    const updatedBookmarks = { ...userBookmarks };
+    if (updatedBookmarks[loggedInUserId]) {
+      updatedBookmarks[loggedInUserId] = updatedBookmarks[loggedInUserId].filter((bookmark) => bookmark.id !== repo.id);
+      setUserBookmarks(updatedBookmarks);
+      saveToLocal(`userBookmarks_${loggedInUserId}`, updatedBookmarks[loggedInUserId]);
+    }
+  };
 
-const removeFromBookmarks = (repo) => {
-  const updatedBookmarks = (userBookmarks[loggedInUserId] || []).filter(
-    (bookmark) => bookmark.id !== repo.id
-  );
-  setUserBookmarks({ ...userBookmarks, [loggedInUserId]: updatedBookmarks });
-  saveToLocal(`userBookmarks_${loggedInUserId}`, updatedBookmarks);
-};
-
+  const value = {
+    user,
+    setUser,
+    loggedInUserId,
+    setLoggedInUserId,
+    userBookmarks,
+    addToBookmarks: handleAddToBookmarks,
+    removeFromBookmarks: handleRemoveFromBookmarks,
+  };
 
   return (
-    <AuthContext.Provider
-    value={{
-      user,
-      setUser,
-      loggedInUserId,
-      setLoggedInUserId,
-      userBookmarks,
-      setUserBookmarks,
-      addToBookmarks,
-      removeFromBookmarks,
-    }}
-  >
-    {children}
-  </AuthContext.Provider>
-  
+    <AuthContext.Provider value={value}>
+      {children}
+    </AuthContext.Provider>
   );
 };
 

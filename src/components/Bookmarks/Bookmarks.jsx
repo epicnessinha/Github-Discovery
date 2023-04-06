@@ -21,7 +21,6 @@ const Bookmarks = () => {
 
     <div className="title">
     <p>My Bookmarks</p>
-    <div className="repo-container">{renderFavoriteRepoCards()}</div>
     <div className="bookmarks-container">
       {bookmarkedRepos.map((repo) => (
         <RepositoryCard
