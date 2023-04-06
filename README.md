@@ -9,6 +9,7 @@
 - Success message missing when the user updates his account with success;
 - Most of the Media queries implementation is missing (it was just because lack of time to do it until the deadline)
 - API requests extremely slow (around 14 seconds);
+- Some Design issues;
 
 
 
