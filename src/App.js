@@ -3,6 +3,8 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login/Login";
 import MyAccount from "./pages/MyAccount/MyAccount"
 import DiscoveryPage from "./pages/DiscoveryPage/DiscoveryPage";
+import BookmarkContextProvider from "./context/BookmarkContext";
+
 
 
 const App = () => {
@@ -10,6 +12,7 @@ const App = () => {
 
   return (
     <BrowserRouter>
+    <BookmarkContextProvider>
       <Routes>
         <Route path="/" element={<Login setUser={setUser} />} />
         <Route
@@ -27,6 +30,7 @@ const App = () => {
           }
         />
       </Routes>
+      </BookmarkContextProvider>
     </BrowserRouter>
   );
 };
