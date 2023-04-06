@@ -6,7 +6,7 @@
 - Users can't bookmark repositories - the Star button can be selected but it don't bookmark the repo;
 - Sort by dropdown - it works, but affects all the repos instead of each category separately;
 - Implementation of cypress integration tests - I wrote a few but I didn't test it;
-- Sucess message missing when the user updates his account with sucess;
+- Success message missing when the user updates his account with success;
 - API requests extremely slow (around 14 seconds);
 
 
@@ -41,7 +41,7 @@ Follow this steps:
 Runs the app in the development mode.\
 Opens [http://localhost:3000](http://localhost:3000) to view it in your browser 
 
-### Credentials to Login:
+### `Credentials to Login:`
 - Username: sword
 - Password: Sword12345
 
