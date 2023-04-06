@@ -3,8 +3,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: rgba(255, 0, 0, 0.897)
-  
+  background-color: rgba(255, 0, 0, 0.897);
 }
 
 .header-left {
@@ -17,7 +16,6 @@
   height: 100px;
   margin-right: 4rem;
   margin-left: 2rem;
- 
 }
 
 .header-nav-list {
@@ -25,7 +23,6 @@
   display: flex;
   margin: 0;
   padding: 0;
-  
 }
 
 .header-nav-item {
@@ -39,9 +36,59 @@
   font-weight: bolder;
   margin-right: 3rem;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 2px 1px 0 #000;
-  
 }
 
 .header-nav-link:hover {
   text-decoration: underline;
+}
+
+/* Media queries for responsive design */
+/* Mobile devices */
+@media (max-width: 767px) {
+  .github-logo {
+    width: 50px;
+    height: 50px;
+    margin-right: 1rem;
+    margin-left: 1rem;
+  }
+
+  .header-nav-link {
+    font-size: 20px;
+    margin-right: 1.5rem;
+  }
+}
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .github-logo {
+    width: 75px;
+    height: 75px;
+    margin-right: 2rem;
+    margin-left: 1.5rem;
+  }
+
+  .header-nav-link {
+    font-size: 25px;
+    margin-right: 2rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) and (max-width: 1919px) {
+  /* Styles for desktop screens are already provided in the base CSS */
+}
+
+/* 4K screens */
+@media (min-width: 1920px) {
+  .github-logo {
+    width: 150px;
+    height: 150px;
+    margin-right: 6rem;
+    margin-left: 4rem;
+  }
+
+  .header-nav-link {
+    font-size: 35px;
+    margin-right: 4rem;
+  }
 }

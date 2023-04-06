@@ -21,10 +21,8 @@ body {
   letter-spacing: 2px;
 }
 
-
 .form {
   margin-bottom: 20px;
-  
 }
 
 .register a {
@@ -32,10 +30,48 @@ body {
   font-weight: bold;
 }
 
-
 .new {
   color: white;
   font-weight: bolder;
   font-size: 1.5rem;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 2px 1px 0 #000;
+}
+
+/* Media queries for responsive design */
+/* Mobile devices */
+@media (max-width: 767px) {
+  .red-text {
+    font-size: 3rem;
+  }
+
+  .new {
+    font-size: 1.2rem;
+  }
+}
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .red-text {
+    font-size: 4rem;
+  }
+
+  .new {
+    font-size: 1.3rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) and (max-width: 1919px) {
+  /* Styles for desktop screens are already provided in the base CSS */
+}
+
+/* 4K screens */
+@media (min-width: 1920px) {
+  .red-text {
+    font-size: 6rem;
+  }
+
+  .new {
+    font-size: 1.8rem;
+  }
 }

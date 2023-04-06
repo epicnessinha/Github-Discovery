@@ -1,33 +1,22 @@
-/* eslint-disable no-undef */
-import React, { useState, useEffect } from "react";
-import RepositoryCard from "../RepositoryCard/RepositoryCard";
-import "./Bookmarks.css";
+import React, { useContext } from 'react';
+import RepositoryCard from '../RepositoryCard/RepositoryCard';
+import { AuthContext } from '../../context/AuthContext';
 
 const Bookmarks = () => {
-  const [bookmarkedRepos, setBookmarkedRepos] = useState([]);
+  const { loggedInUserId, userBookmarks } = useContext(AuthContext);
 
-  useEffect(() => {
-    const bookmarks = JSON.parse(localStorage.getItem("bookmarks")) || [];
-    setBookmarkedRepos(bookmarks);
-  }, []);
-
-  const handleRemoveBookmark = (id) => {
-    const newBookmarks = bookmarkedRepos.filter((repo) => repo.id !== id);
-    setBookmarkedRepos(newBookmarks);
-    localStorage.setItem("bookmarks", JSON.stringify(newBookmarks));
-  };
+  const bookmarks = userBookmarks[loggedInUserId] || [];
 
   return (
-    <div className="bookmarks-container">
-      {bookmarkedRepos.map((repo) => (
-        <RepositoryCard
-          key={repo.id}
-          repo={repo}
-          bookmarks={bookmarkedRepos}
-          setBookmarks={setBookmarkedRepos}
-          onRemoveBookmark={handleRemoveBookmark}
-        />
-      ))}
+    <div className="bookmarks">
+    <h1>My Bookmarks</h1>
+      {bookmarks.length ? (
+        bookmarks.map((repo) => (
+          <RepositoryCard key={repo.id} repo={repo} />
+        ))
+      ) : (
+        <h3>No bookmarks found</h3>
+      )}
     </div>
   );
 };

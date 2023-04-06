@@ -1,5 +1,5 @@
 .repo-card {
-  position:relative;
+  position: relative;
   height: 60%;
   margin: 15px;
   overflow: hidden;
@@ -12,7 +12,6 @@
   background-size: cover;
   border: 2px solid rgb(251, 244, 244);
 }
-
 
 .repo-card:hover {
   transform: translateY(-10px);
@@ -33,7 +32,6 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 10px;
- 
 }
 
 .repo-card .card-title {
@@ -49,7 +47,6 @@
   font-size: 14px;
   line-height: 1.2;
   margin-bottom: 10px;
-
 }
 
 .repo-card .card-footer {
@@ -70,6 +67,7 @@
 .repo-card .btn:hover {
   transform: scale(1.1);
 }
+
 .repo-card:hover {
   transform: scale(1.2);
   transition: transform 0.3s ease-in-out;
@@ -78,14 +76,12 @@
 .repo-card .card-footer {
   display: flex;
   justify-content: space-between;
-  
 }
 
 .repo-card .card-text {
   height: 7rem;
   overflow: hidden;
   text-overflow: ellipsis;
-  
 }
 
 .repo-card .btn {
@@ -94,8 +90,31 @@
   font-size: 0.9rem;
 }
 
-@media (min-width: 768px) {
+/* Media queries for responsive design */
+/* Mobile devices */
+@media (max-width: 767px) {
+  .repo-card {
+    width: 90%;
+  }
+}
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
   .repo-card {
     width: 15rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) and (max-width: 1919px) {
+  .repo-card {
+    width: 20rem;
+  }
+}
+
+/* 4K screens */
+@media (min-width: 1920px) {
+  .repo-card {
+    width: 25rem;
   }
 }

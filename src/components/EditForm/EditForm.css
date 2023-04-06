@@ -27,7 +27,7 @@
 
 .EditForm input {
   display: block;
-  width: 400px;
+  width: 100%;
   padding: 0.5rem;
   margin-bottom: 2.5rem;
   font-size: 1rem;
@@ -67,3 +67,71 @@
   font-weight: 600;
   margin-top: 1rem;
 }
+
+/* Media queries for responsive design */
+/* Mobile devices */
+@media (max-width: 767px) {
+  .EditForm {
+    padding: 1.5rem;
+  }
+
+  .EditForm h1 {
+    font-size: 1.5rem;
+  }
+
+  .EditForm input {
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .EditForm button {
+    font-size: 0.9rem;
+  }
+}
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .EditForm {
+    padding: 2rem;
+  }
+
+  .EditForm h1 {
+    font-size: 1.8rem;
+  }
+
+  .EditForm input {
+    font-size: 0.95rem;
+    margin-bottom: 2rem;
+  }
+
+  .EditForm button {
+    font-size: 0.95rem;
+  }
+}
+
+/* Desktop */
+@media (min-width: 1024px) and (max-width: 1919px) {
+  /* Styles for desktop screens are already provided in the base CSS */
+}
+
+/* 4K screens */
+@media (min-width: 1920px) {
+  .EditForm {
+    max-width: 600px;
+    padding: 4rem;
+  }
+
+  .EditForm h1 {
+    font-size: 2.5rem;
+  }
+
+  .EditForm input {
+    font-size: 1.2rem;
+    margin-bottom: 3rem;
+  }
+
+  .EditForm button {
+    font-size: 1.2rem;
+  }
+}
+

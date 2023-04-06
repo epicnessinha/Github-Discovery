@@ -1,36 +1,63 @@
 select {
-    background-color: rgba(242, 8, 8, 0.85);
-    color: #ffffff;
-    border: none;
-    padding: 0.5rem 1rem;
+  background-color: rgba(242, 8, 8, 0.85);
+  color: #ffffff;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 0.5rem;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  margin-left: 2rem;
+  border: 2px solid rgb(251, 244, 244);
+}
+
+select:hover,
+select:focus {
+  background-color: rgb(229, 23, 23);
+  outline: none;
+}
+
+option {
+  background-color: rgba(0, 0, 0, 0.85);
+  color: #ffffff;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+option:hover,
+option:focus {
+  background-color: rgba(255, 255, 255, 0.316);
+  outline: none;
+}
+
+/* Media queries for responsive design */
+/* Mobile devices */
+@media (max-width: 767px) {
+  select {
+    font-size: 0.8rem;
+  }
+}
+
+/* Tablets */
+@media (min-width: 768px) and (max-width: 1023px) {
+  select {
     font-size: 1rem;
-    font-weight: bold;
-    border-radius: 0.5rem;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    cursor: pointer;
-    margin-left: 2rem;
-    border: 2px solid rgb(251, 244, 244);
-  
   }
-  
-  select:hover,
-  select:focus {
-    background-color: rgb(229, 23, 23);
-    outline: none;
+}
+
+/* Desktop */
+@media (min-width: 1024px) and (max-width: 1919px) {
+  select {
+    font-size: 1.2rem;
   }
-  
-  option {
-    background-color: rgba(0, 0, 0, 0.85);
-    color: #ffffff;
-    font-size: 1rem;
-    font-weight: bold;
+}
+
+/* 4K screens */
+@media (min-width: 1920px) {
+  select {
+    font-size: 1.4rem;
   }
-  
-  option:hover,
-  option:focus {
-    background-color: rgba(255, 255, 255, 0.316);
-    outline: none;
-  }
-  
+}

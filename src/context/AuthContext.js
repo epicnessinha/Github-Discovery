@@ -1,52 +1,40 @@
-// AuthContext.js
+// src/context/AuthContext.js
+
 import React, { createContext, useState } from 'react';
 
 export const AuthContext = createContext();
 
-const AuthContextProvider = ({ children }) => {
+const AuthProvider = ({ children }) => {
   const [loggedInUserId, setLoggedInUserId] = useState(null);
-const [userBookmarks, setUserBookmarks] = useState({});
+  const [userBookmarks, setUserBookmarks] = useState({});
 
+  const addToBookmarks = (userId, repo) => {
+    setUserBookmarks((prevUserBookmarks) => ({
+      ...prevUserBookmarks,
+      [userId]: [...(prevUserBookmarks[userId] || []), repo],
+    }));
+  };
 
-const addToBookmarks = (repo) => {
-  if (!userBookmarks[loggedInUserId]?.some((bookmark) => bookmark.id === repo.id)) {
-    setUserBookmarks({
-      ...userBookmarks,
-      [loggedInUserId]: [...(userBookmarks[loggedInUserId] || []), repo],
-    });
-    saveToLocal(`userBookmarks_${loggedInUserId}`, [
-      ...(userBookmarks[loggedInUserId] || []),
-      repo,
-    ]);
-  }
-};
-
-const removeFromBookmarks = (repo) => {
-  const updatedBookmarks = (userBookmarks[loggedInUserId] || []).filter(
-    (bookmark) => bookmark.id !== repo.id
-  );
-  setUserBookmarks({ ...userBookmarks, [loggedInUserId]: updatedBookmarks });
-  saveToLocal(`userBookmarks_${loggedInUserId}`, updatedBookmarks);
-};
-
+  const removeFromBookmarks = (userId, repoId) => {
+    setUserBookmarks((prevUserBookmarks) => ({
+      ...prevUserBookmarks,
+      [userId]: (prevUserBookmarks[userId] || []).filter((repo) => repo.id !== repoId),
+    }));
+  };
 
   return (
     <AuthContext.Provider
-    value={{
-      user,
-      setUser,
-      loggedInUserId,
-      setLoggedInUserId,
-      userBookmarks,
-      setUserBookmarks,
-      addToBookmarks,
-      removeFromBookmarks,
-    }}
-  >
-    {children}
-  </AuthContext.Provider>
-  
+      value={{
+        loggedInUserId,
+        setLoggedInUserId,
+        userBookmarks,
+        addToBookmarks,
+        removeFromBookmarks,
+      }}
+    >
+      {children}
+    </AuthContext.Provider>
   );
 };
 
-export default AuthContextProvider;
+export default AuthProvider;
