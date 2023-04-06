@@ -18,6 +18,7 @@ const Bookmarks = () => {
   };
 
   return (
+
     <div className="title">
     <p>My Bookmarks</p>
     <div className="bookmarks-container">
@@ -30,6 +31,7 @@ const Bookmarks = () => {
           onRemoveBookmark={handleRemoveBookmark}
         />
       ))}
+
     </div>
     </div>
   );
