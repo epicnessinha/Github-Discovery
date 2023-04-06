@@ -4,7 +4,6 @@ import ToggleTopics from "../../components/ToggleTopics/ToggleTopics";
 import Bookmarks from "../../components/Bookmarks/Bookmarks";
 import SortDropdown from "../../components/SortDropdown/SortDropdown";
 import RepositoryCard from "../../components/RepositoryCard/RepositoryCard";
-import FavoritesRow from "../../components/FavoritesRow/FavoritesRow";
 import { fetchPopularReposByTopics } from "../../services/apiCalls";
 import { saveToLocal, loadFromLocal } from "../../utils/localStorage";
 import "./DiscoveryPage.css";

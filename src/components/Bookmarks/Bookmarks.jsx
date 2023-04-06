@@ -18,6 +18,10 @@ const Bookmarks = () => {
   };
 
   return (
+
+    <div className="title">
+    <p>My Bookmarks</p>
+    <div className="repo-container">{renderFavoriteRepoCards()}</div>
     <div className="bookmarks-container">
       {bookmarkedRepos.map((repo) => (
         <RepositoryCard
@@ -28,6 +32,8 @@ const Bookmarks = () => {
           onRemoveBookmark={handleRemoveBookmark}
         />
       ))}
+
+    </div>
     </div>
   );
 };
