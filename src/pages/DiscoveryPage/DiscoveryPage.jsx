@@ -64,13 +64,12 @@ const DiscoveryPage = () => {
   return (
     <div>
       <Header isLoggedIn={true} />
-      <Bookmarks />
+      <Bookmarks bookmarks={bookmarks} setBookmarks={setBookmarks} />
       <ToggleTopics
         topics={topics}
         selectedTopics={selectedTopics}
         handleTopicToggle={handleTopicToggle}
       />
-      <Bookmarks bookmarks={bookmarks} setBookmarks={setBookmarks} />
       {topicsToRender.map((topic) => (
         <div key={topic}>
           <h2>{topic}</h2>

@@ -8,25 +8,24 @@ const RepositoryCard = ({ repo, bookmarks, setBookmarks }) => {
 
   const toggleBookmark = (event) => {
     event.stopPropagation();
+    const updatedBookmarks = bookmarked
+      ? bookmarks.filter((id) => id !== repo.id)
+      : [...bookmarks, repo.id];
+    setBookmarks(updatedBookmarks);
     setBookmarked(!bookmarked);
-    const index = bookmarks.indexOf(repo.id);
-    if (index === -1) {
-      setBookmarks([...bookmarks, repo.id]);
-    } else {
-      const updatedBookmarks = [...bookmarks];
-      updatedBookmarks.splice(index, 1);
-      setBookmarks(updatedBookmarks);
-    }
   };
 
   return (
     <Card className="repo-card" style={{ width: "15rem" }}>
       <>
         <a href={repo.html_url} target="_blank" rel="noopener noreferrer">
-          <Card.Img variant="top" src={repo.owner.avatar_url} />
+          <Card.Img
+            variant="top"
+            src={repo.owner.avatar_url}
+            alt={`${repo.owner.login}'s avatar`}
+          />
           <Card.Body>
             <Card.Title className="title">{repo.name}</Card.Title>
-            {/* <Card.Text>{repo.description}</Card.Text> */}
           </Card.Body>
         </a>
         <Card.Footer>
