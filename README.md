@@ -1,7 +1,7 @@
-# Github Discovery App (Sword Health Code Challenge)
+# Github Discovery App (Code Challenge)
 
 
-##  ⚠️ Currently needs to fixing some issues! ⚠️
+##  ⚠️ Currently fixing some issues! ⚠️
 
 - Users can't bookmark repositories - the Star button can be selected but it don't bookmark the repo;
 - Sort by dropdown - it works, but affects all the repos instead of each category separately;
@@ -13,7 +13,7 @@
 
 
 
-Sword Health Techical challenge where I was challanged to to build a Github repository discovery website with layouts inspired by Netflix, where users login to their accounts and see the popular repositories from Github by different topics.
+Techical challenge where I was challanged to to build a Github repository discovery website with layouts inspired by Netflix, where users login to their accounts and see the popular repositories from Github by different topics.
 The user is able to do the sign in/sign up on the website, if the login is made with sucess the user will be able to visualize the github discovery page, where he is able to toggle the topics to show, sort the repos by dropdown (start, fork, last update). When the user click on a repository card, it will open in a new tab. The user is able to edit is personal info (username (required) and email). All the user options (categories, sort and account updates) persist locally.
 
 
