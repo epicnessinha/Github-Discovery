@@ -1,14 +1,16 @@
 # Github Discovery App (Code Challenge)
 
 
-##  ⚠️ Currently fixing some issues! ⚠️
+##  ⚠️ Currently fixing this issues: ⚠️
 
 - Users can't bookmark repositories - the Star button can be selected but it don't bookmark the repo;
 - Sort by dropdown - it works, but affects all the repos instead of each category separately;
-- Implementation of cypress integration tests - I wrote a few but I didn't test it;
+- Implementation of cypress integration tests;
 - Success message missing when the user updates his account with success;
-- Most of the Media queries implementation is missing (it was just because lack of time to do it until the deadline)
+- Most of the Media queries implementation are missing;
 - API requests extremely slow (around 14 seconds);
+- Needs CSS preprocessor usage or CSS variables;
+- Better prop/error handling;
 - Some Design issues;
 
 
